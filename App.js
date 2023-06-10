@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -11,15 +11,15 @@ import {
 } from "react-native";
 
 export default function App() {
+  const [counter, setCounter] = useState(0);
+  const onClickHandler = () => {
+    setCounter(counter + 1);
+  };
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Programming</Text>
-      <Button
-        title="Facebook nguyen huy hieu"
-        onPress={() => {
-          Linking.openURL("https://www.facebook.com/huyhieunguyen19/");
-        }}
-      />
+      <Text style={styles.text}>{counter * 5}</Text>
+      <Button title="Add" onPress={onClickHandler} />
+      <Text> You click {counter} times</Text>
     </View>
   );
 }
